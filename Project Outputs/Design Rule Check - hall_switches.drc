@@ -1,0 +1,184 @@
+Protel Design System Design Rule Check
+PCB File : C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect PCBA Redesign\ECAD\hall_switches.PcbDoc
+Date     : 4/15/2024
+Time     : 1:45:12 PM
+
+Processing Rule : Clearance Constraint (Gap=0.1mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)
+Rule Violations :0
+
+Processing Rule : Routing Layers(All)
+Rule Violations :0
+
+Processing Rule : Routing Via (MinHoleWidth=0.711mm) (MaxHoleWidth=0.711mm) (PreferredHoleWidth=0.711mm) (MinWidth=1.27mm) (MaxWidth=1.27mm) (PreferedWidth=1.27mm) (All)
+   Violation between Routing Via Style: Via (-1.926mm,36.425mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-1.928mm,33.736mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-11.684mm,35.199mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-28.966mm,12.413mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-30.656mm,5.815mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-33.631mm,1.952mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-34.26mm,7.067mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-36.357mm,1.952mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-41.907mm,1.907mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-5.873mm,32.568mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-8.845mm,35.959mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+   Violation between Routing Via Style: Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm
+Rule Violations :25
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.381mm) (Max=0.381mm) (Prefered=0.381mm) (All)
+Rule Violations :0
+
+Processing Rule : SMD Neck-Down Constraint (Percent=100%) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.254mm) (All)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-1.926mm,36.425mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-1.928mm,33.736mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-11.684mm,35.199mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-28.966mm,12.413mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-30.656mm,5.815mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-33.631mm,1.952mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-34.26mm,7.067mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-36.357mm,1.952mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-41.907mm,1.907mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-5.873mm,32.568mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-8.845mm,35.959mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+   Violation between Minimum Annular Ring: (0.175mm < 0.254mm) Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)
+Rule Violations :25
+
+Processing Rule : Hole Size Constraint (Min=0.254mm) (Max=7.62mm) (All)
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-1.926mm,36.425mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-1.928mm,33.736mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-11.684mm,35.199mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-28.966mm,12.413mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-30.656mm,5.815mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-33.631mm,1.952mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-34.26mm,7.067mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-36.357mm,1.952mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-41.907mm,1.907mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-5.873mm,32.568mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-8.845mm,35.959mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+   Violation between Hole Size Constraint: (0.25mm < 0.254mm) Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm
+Rule Violations :25
+
+Processing Rule : Pads and Vias to follow the Drill pairs settings
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer And Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+Rule Violations :1
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.16mm < 0.254mm) Between Pad C1-1(-8.981mm,40.072mm) on Bottom Layer And Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.16mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.16mm < 0.254mm) Between Pad C1-2(-10.831mm,40.072mm) on Bottom Layer And Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.16mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.141mm < 0.254mm) Between Pad C2-1(-25.726mm,30.39mm) on Bottom Layer And Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.141mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.145mm < 0.254mm) Between Pad C2-2(-27.034mm,31.698mm) on Bottom Layer And Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.145mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.033mm < 0.254mm) Between Pad C2-2(-27.034mm,31.698mm) on Bottom Layer And Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.033mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.118mm < 0.254mm) Between Pad C3-1(-39.314mm,6.437mm) on Bottom Layer And Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.118mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.141mm < 0.254mm) Between Pad C3-1(-39.314mm,6.437mm) on Bottom Layer And Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.141mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.231mm < 0.254mm) Between Pad J1-5(-33.46mm,3.902mm) on Top Layer And Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.231mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.177mm < 0.254mm) Between Pad R1-2(-31.145mm,8.697mm) on Top Layer And Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.177mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.125mm < 0.254mm) Between Pad R3-1(-37.318mm,10.88mm) on Top Layer And Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.125mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.236mm < 0.254mm) Between Pad R4-1(-40.164mm,8.98mm) on Top Layer And Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.236mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.022mm < 0.254mm) Between Pad R4-2(-40.164mm,10.77mm) on Top Layer And Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.022mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.239mm < 0.254mm) Between Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer And Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.239mm] / [Bottom Solder] Mask Sliver [0.239mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.253mm < 0.254mm) Between Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer And Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.253mm] / [Bottom Solder] Mask Sliver [0.253mm]
+Rule Violations :14
+
+Processing Rule : Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (-26.507mm,30.423mm) on Bottom Overlay And Pad C2-1(-25.726mm,30.39mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.25mm < 0.254mm) Between Arc (-36.66mm,4.902mm) on Top Overlay And Pad J1-1(-36.66mm,3.902mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.25mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Arc (-39.861mm,6.267mm) on Bottom Overlay And Pad C3-1(-39.314mm,6.437mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.25mm < 0.254mm) Between Arc (-4.97mm,33.559mm) on Top Overlay And Pad J2-1(-3.97mm,33.559mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.25mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad C3-2(-41.164mm,6.437mm) on Bottom Layer And Text "U3" (-40.702mm,7.808mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.145mm < 0.254mm) Between Pad R4-1(-40.164mm,8.98mm) on Top Layer And Track (-39.614mm,9.58mm)(-39.614mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.145mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.145mm < 0.254mm) Between Pad R4-1(-40.164mm,8.98mm) on Top Layer And Track (-40.714mm,9.58mm)(-40.714mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.145mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.135mm < 0.254mm) Between Pad R4-2(-40.164mm,10.77mm) on Top Layer And Track (-39.614mm,9.58mm)(-39.614mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.135mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.135mm < 0.254mm) Between Pad R4-2(-40.164mm,10.77mm) on Top Layer And Track (-40.714mm,9.58mm)(-40.714mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.135mm]
+Rule Violations :9
+
+Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+   Violation between Net Antennae: Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer 
+Rule Violations :1
+
+Processing Rule : Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches'))
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT SIP Component J1-SM05B-SURS-TF(LF)(SN) (-35.06mm,2.802mm) on Top Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT SIP Component J2-SM05B-SURS-TF(LF)(SN) (-2.87mm,35.159mm) on Top Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component C1-Capacitor 100 nF +/-10% 50 V 0805 (-9.906mm,40.072mm) on Bottom Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component C2-Capacitor 100 nF +/-10% 50 V 0805 (-26.38mm,31.044mm) on Bottom Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component C3-Capacitor 100 nF +/-10% 50 V 0805 (-40.239mm,6.437mm) on Bottom Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R1-Resistor 10k +/-1% 0805 125 mW (-31.145mm,9.747mm) on Top Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R2-Resistor 10k +/-1% 0805 125 mW (-34.281mm,9.78mm) on Top Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R3-Resistor 10k +/-1% 0805 125 mW (-37.318mm,9.83mm) on Top Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R4-0 (-40.164mm,9.88mm) on Top Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component U1-HAL1502SU-A (-3.617mm,41.342mm) on Bottom Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component U2-HAL1502SU-A (-29.345mm,29.345mm) on Bottom Layer 
+   Violation between Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component U3-HAL1502SU-A (-41.342mm,3.617mm) on Bottom Layer 
+Rule Violations :12
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) 
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 112
+Waived Violations : 0
+Time Elapsed        : 00:00:03

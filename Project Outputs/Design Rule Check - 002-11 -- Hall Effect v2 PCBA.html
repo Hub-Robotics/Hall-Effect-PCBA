@@ -1,0 +1,724 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12/27/24</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9:48:44 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc" class="file"><acronym title="C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc">C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">112</td></tr>
+</table>
+</td>
+</table><a name="IDCAOHMPXBE0ULC00CFVJ10TUTVCHLOI5X5THD4ON4D5H1YZI12XWN"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTQSUT2FAMJLUHFVQG2AN05VHMGZN1ZMOVXIQLVNGDAFIMMHHDJRO">Clearance Constraint (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUPEHT4Y5VNYWMEIPDJI5VWGIAD44XPUYHAI32NL3KRNVTNWJ4TND">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXVFCOYOF2VXXIJJDOQWLWPB1ZCTDLAYYNZMRAON30S4ELU1YIBNH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDG4GOFXE213VKKRIBDRYOOSCCWPJ1GX1QS5EIFNEESW4G0DQOV4EH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHZQMSS3U15B4MGVGZQWLCISA0NZ2VISBPC0RAMBWC2ZUYUKIORRO">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJYPL2EV4U45EFFPTE3U0LO5OIKKGEFFV1CAKMNPIR0WYIRGCKKSE">Routing Layers(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKHVLKKRUEND2KFPSPSXJA5JZIO4DNJXL1EFM1PKUSNZDCMGENMLO">Routing Via (MinHoleWidth=0.711mm) (MaxHoleWidth=0.711mm) (PreferredHoleWidth=0.711mm) (MinWidth=1.27mm) (MaxWidth=1.27mm) (PreferedWidth=1.27mm) (All)</a></td>
+<td class="column2">25</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIOTK0D2H5ZVLNWUKBZM5EXA53KOPR4II0KQZHPEQST2TPTQZYCSK">Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.381mm) (Max=0.381mm) (Prefered=0.381mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLJBN4CPPLQX4MIHK10LQ5JAZVBJU30OHDYE1UMJSK2NSUTG1A4EP">SMD Neck-Down Constraint (Percent=100%) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFYUJOK5ZQK4FJZN5TMHFYTO2ILBNTJR3B3GQVDES52HX4DIKJY4N">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEUIBWFYRR1LCDD252534CN4CMWPMFCOOUG4C4BBIUVPXC1AYPJO">Minimum Annular Ring (Minimum=0.254mm) (All)</a></td>
+<td class="column2">25</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIWC5ZWTAVMVWNT2GE2WBQS4POFNG34JX0ECYUIDGQZ4G0BISSSTH">Hole Size Constraint (Min=0.254mm) (Max=7.62mm) (All)</a></td>
+<td class="column2">25</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5TM5UR1R3AN2EPTZN1P15XZ5LTCMHELATQH03MUFEH50G5NDRJH">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLSFWT1UHZZIPLF4KPSWXG1K44FCB5UNJKVWK0GFZEE2CSPUOXE4M">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHV0Q5PXSDESWEWQLNY2S103PGCTDS2TEWLT4USD3J1U0HFCCBH0K">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">14</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID32HOOXP2S05PMF3S2IF4JVSEQCIRWIXZOW1BVOKXUTG3NU3H1EXL">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNEONPV30XM5VH3151ZF2KQGJQFCFDEFHJN4MYVGHMCVC2CU0DZI">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQF0AZTCSNVZJP44CZD1WX0XQEMHG4PKH1OCE1JIBOJJFLB4YE2LO">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGIX134FOAC5BGX2W2W10D3EPAJEZL0YAHZGEHTJKPBH4QIX5ZTLP">Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches'))</a></td>
+<td class="column2">12</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQDNG4TGJJC5DMOXRL2TYLO1BWK0HICH1ZECZSMLGYVB5ICLJQKXD">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDU1WEXHV1W3BOBF4MNIPGYCHUIXXT3ITKQF02YKA4TJX3YBEY2AO">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">112</td>
+</tr>
+</table><br><a name="IDKHVLKKRUEND2KFPSPSXJA5JZIO4DNJXL1EFM1PKUSNZDCMGENMLO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Routing Via (MinHoleWidth=0.711mm) (MaxHoleWidth=0.711mm) (PreferredHoleWidth=0.711mm) (MinWidth=1.27mm) (MaxWidth=1.27mm) (PreferedWidth=1.27mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7387.225mil|Location2.X=7419.847mil|Location1.Y=5867.239mil|Location2.Y=5899.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7387.225mil|Location2.X=7419.847mil|Location1.Y=5867.239mil|Location2.Y=5899.861mil|Absolute=True">Routing Via Style: Via (-1.926mm,36.425mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7387.114mil|Location2.X=7419.735mil|Location1.Y=5761.385mil|Location2.Y=5794.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7387.114mil|Location2.X=7419.735mil|Location1.Y=5761.385mil|Location2.Y=5794.007mil|Absolute=True">Routing Via Style: Via (-1.928mm,33.736mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7036.619mil|Location2.X=7069.241mil|Location1.Y=5943.192mil|Location2.Y=5975.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7036.619mil|Location2.X=7069.241mil|Location1.Y=5943.192mil|Location2.Y=5975.814mil|Absolute=True">Routing Via Style: Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7003.036mil|Location2.X=7035.658mil|Location1.Y=5818.978mil|Location2.Y=5851.6mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7003.036mil|Location2.X=7035.658mil|Location1.Y=5818.978mil|Location2.Y=5851.6mil|Absolute=True">Routing Via Style: Via (-11.684mm,35.199mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6475.289mil|Location2.X=6507.911mil|Location1.Y=5699.154mil|Location2.Y=5731.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6475.289mil|Location2.X=6507.911mil|Location1.Y=5699.154mil|Location2.Y=5731.776mil|Absolute=True">Routing Via Style: Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6434.886mil|Location2.X=6467.508mil|Location1.Y=5733.527mil|Location2.Y=5766.149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6434.886mil|Location2.X=6467.508mil|Location1.Y=5733.527mil|Location2.Y=5766.149mil|Absolute=True">Routing Via Style: Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6322.643mil|Location2.X=6355.265mil|Location1.Y=4921.903mil|Location2.Y=4954.525mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6322.643mil|Location2.X=6355.265mil|Location1.Y=4921.903mil|Location2.Y=4954.525mil|Absolute=True">Routing Via Style: Via (-28.966mm,12.413mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6256.105mil|Location2.X=6288.727mil|Location1.Y=4662.127mil|Location2.Y=4694.749mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6256.105mil|Location2.X=6288.727mil|Location1.Y=4662.127mil|Location2.Y=4694.749mil|Absolute=True">Routing Via Style: Via (-30.656mm,5.815mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6224.533mil|Location2.X=6257.154mil|Location1.Y=4713.187mil|Location2.Y=4745.809mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6224.533mil|Location2.X=6257.154mil|Location1.Y=4713.187mil|Location2.Y=4745.809mil|Absolute=True">Routing Via Style: Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6145.713mil|Location2.X=6178.335mil|Location1.Y=4637.433mil|Location2.Y=4670.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6145.713mil|Location2.X=6178.335mil|Location1.Y=4637.433mil|Location2.Y=4670.055mil|Absolute=True">Routing Via Style: Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6138.99mil|Location2.X=6171.612mil|Location1.Y=4510.061mil|Location2.Y=4542.683mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6138.99mil|Location2.X=6171.612mil|Location1.Y=4510.061mil|Location2.Y=4542.683mil|Absolute=True">Routing Via Style: Via (-33.631mm,1.952mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6114.217mil|Location2.X=6146.839mil|Location1.Y=4711.403mil|Location2.Y=4744.025mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6114.217mil|Location2.X=6146.839mil|Location1.Y=4711.403mil|Location2.Y=4744.025mil|Absolute=True">Routing Via Style: Via (-34.26mm,7.067mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031.667mil|Location2.X=6064.289mil|Location1.Y=4510.061mil|Location2.Y=4542.683mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031.667mil|Location2.X=6064.289mil|Location1.Y=4510.061mil|Location2.Y=4542.683mil|Absolute=True">Routing Via Style: Via (-36.357mm,1.952mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6009.886mil|Location2.X=6042.508mil|Location1.Y=4660.284mil|Location2.Y=4692.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6009.886mil|Location2.X=6042.508mil|Location1.Y=4660.284mil|Location2.Y=4692.907mil|Absolute=True">Routing Via Style: Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5993.834mil|Location2.X=6026.456mil|Location1.Y=4921.903mil|Location2.Y=4954.525mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5993.834mil|Location2.X=6026.456mil|Location1.Y=4921.903mil|Location2.Y=4954.525mil|Absolute=True">Routing Via Style: Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5993.832mil|Location2.X=6026.454mil|Location1.Y=4711.403mil|Location2.Y=4744.025mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5993.832mil|Location2.X=6026.454mil|Location1.Y=4711.403mil|Location2.Y=4744.025mil|Absolute=True">Routing Via Style: Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5934.277mil|Location2.X=5966.899mil|Location1.Y=4742.785mil|Location2.Y=4775.407mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5934.277mil|Location2.X=5966.899mil|Location1.Y=4742.785mil|Location2.Y=4775.407mil|Absolute=True">Routing Via Style: Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5881.777mil|Location2.X=5914.399mil|Location1.Y=4904.844mil|Location2.Y=4937.466mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5881.777mil|Location2.X=5914.399mil|Location1.Y=4904.844mil|Location2.Y=4937.466mil|Absolute=True">Routing Via Style: Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5854.966mil|Location2.X=5887.588mil|Location1.Y=4741.22mil|Location2.Y=4773.842mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5854.966mil|Location2.X=5887.588mil|Location1.Y=4741.22mil|Location2.Y=4773.842mil|Absolute=True">Routing Via Style: Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5854.966mil|Location2.X=5887.588mil|Location1.Y=4742.785mil|Location2.Y=4775.407mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5854.966mil|Location2.X=5887.588mil|Location1.Y=4742.785mil|Location2.Y=4775.407mil|Absolute=True">Routing Via Style: Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.142mil|Location2.X=5845.764mil|Location1.Y=4508.276mil|Location2.Y=4540.898mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.142mil|Location2.X=5845.764mil|Location1.Y=4508.276mil|Location2.Y=4540.898mil|Absolute=True">Routing Via Style: Via (-41.907mm,1.907mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7231.835mil|Location2.X=7264.457mil|Location1.Y=5715.398mil|Location2.Y=5748.02mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7231.835mil|Location2.X=7264.457mil|Location1.Y=5715.398mil|Location2.Y=5748.02mil|Absolute=True">Routing Via Style: Via (-5.873mm,32.568mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7183.036mil|Location2.X=7215.658mil|Location1.Y=5963.192mil|Location2.Y=5995.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7183.036mil|Location2.X=7215.658mil|Location1.Y=5963.192mil|Location2.Y=5995.814mil|Absolute=True">Routing Via Style: Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7114.796mil|Location2.X=7147.417mil|Location1.Y=5848.908mil|Location2.Y=5881.529mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7114.796mil|Location2.X=7147.417mil|Location1.Y=5848.908mil|Location2.Y=5881.529mil|Absolute=True">Routing Via Style: Via (-8.845mm,35.959mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7114.374mil|Location2.X=7146.997mil|Location1.Y=5943.192mil|Location2.Y=5975.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7114.374mil|Location2.X=7146.997mil|Location1.Y=5943.192mil|Location2.Y=5975.814mil|Absolute=True">Routing Via Style: Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer Actual Size : 0.6mm Actual Hole Size : 0.25mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDAEUIBWFYRR1LCDD252534CN4CMWPMFCOOUG4C4BBIUVPXC1AYPJO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Annular Ring (Minimum=0.254mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.911mil|Location2.X=7409.161mil|Location1.Y=5886.291mil|Location2.Y=5897.541mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.911mil|Location2.X=7409.161mil|Location1.Y=5886.291mil|Location2.Y=5897.541mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-1.926mm,36.425mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.8mil|Location2.X=7409.05mil|Location1.Y=5780.438mil|Location2.Y=5791.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.8mil|Location2.X=7409.05mil|Location1.Y=5780.438mil|Location2.Y=5791.688mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-1.928mm,33.736mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7047.305mil|Location2.X=7058.555mil|Location1.Y=5962.244mil|Location2.Y=5973.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7047.305mil|Location2.X=7058.555mil|Location1.Y=5962.244mil|Location2.Y=5973.494mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7013.722mil|Location2.X=7024.972mil|Location1.Y=5838.03mil|Location2.Y=5849.28mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7013.722mil|Location2.X=7024.972mil|Location1.Y=5838.03mil|Location2.Y=5849.28mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-11.684mm,35.199mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6485.975mil|Location2.X=6497.225mil|Location1.Y=5718.206mil|Location2.Y=5729.456mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6485.975mil|Location2.X=6497.225mil|Location1.Y=5718.206mil|Location2.Y=5729.456mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6445.572mil|Location2.X=6456.822mil|Location1.Y=5752.579mil|Location2.Y=5763.829mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6445.572mil|Location2.X=6456.822mil|Location1.Y=5752.579mil|Location2.Y=5763.829mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6333.329mil|Location2.X=6344.579mil|Location1.Y=4940.955mil|Location2.Y=4952.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6333.329mil|Location2.X=6344.579mil|Location1.Y=4940.955mil|Location2.Y=4952.205mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-28.966mm,12.413mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6266.791mil|Location2.X=6278.041mil|Location1.Y=4681.18mil|Location2.Y=4692.43mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6266.791mil|Location2.X=6278.041mil|Location1.Y=4681.18mil|Location2.Y=4692.43mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-30.656mm,5.815mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6235.218mil|Location2.X=6246.468mil|Location1.Y=4732.239mil|Location2.Y=4743.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6235.218mil|Location2.X=6246.468mil|Location1.Y=4732.239mil|Location2.Y=4743.489mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156.399mil|Location2.X=6167.649mil|Location1.Y=4656.485mil|Location2.Y=4667.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156.399mil|Location2.X=6167.649mil|Location1.Y=4656.485mil|Location2.Y=4667.735mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149.676mil|Location2.X=6160.926mil|Location1.Y=4529.113mil|Location2.Y=4540.363mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149.676mil|Location2.X=6160.926mil|Location1.Y=4529.113mil|Location2.Y=4540.363mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-33.631mm,1.952mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6124.903mil|Location2.X=6136.153mil|Location1.Y=4730.455mil|Location2.Y=4741.705mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6124.903mil|Location2.X=6136.153mil|Location1.Y=4730.455mil|Location2.Y=4741.705mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-34.26mm,7.067mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6042.353mil|Location2.X=6053.603mil|Location1.Y=4529.113mil|Location2.Y=4540.363mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6042.353mil|Location2.X=6053.603mil|Location1.Y=4529.113mil|Location2.Y=4540.363mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-36.357mm,1.952mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6020.572mil|Location2.X=6031.822mil|Location1.Y=4679.337mil|Location2.Y=4690.587mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6020.572mil|Location2.X=6031.822mil|Location1.Y=4679.337mil|Location2.Y=4690.587mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.52mil|Location2.X=6015.77mil|Location1.Y=4940.955mil|Location2.Y=4952.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.52mil|Location2.X=6015.77mil|Location1.Y=4940.955mil|Location2.Y=4952.205mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.518mil|Location2.X=6015.768mil|Location1.Y=4730.455mil|Location2.Y=4741.705mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.518mil|Location2.X=6015.768mil|Location1.Y=4730.455mil|Location2.Y=4741.705mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5944.963mil|Location2.X=5956.213mil|Location1.Y=4761.837mil|Location2.Y=4773.087mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5944.963mil|Location2.X=5956.213mil|Location1.Y=4761.837mil|Location2.Y=4773.087mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5892.463mil|Location2.X=5903.713mil|Location1.Y=4923.896mil|Location2.Y=4935.146mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5892.463mil|Location2.X=5903.713mil|Location1.Y=4923.896mil|Location2.Y=4935.146mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.652mil|Location2.X=5876.902mil|Location1.Y=4760.272mil|Location2.Y=4771.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.652mil|Location2.X=5876.902mil|Location1.Y=4760.272mil|Location2.Y=4771.522mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.652mil|Location2.X=5876.902mil|Location1.Y=4761.837mil|Location2.Y=4773.087mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.652mil|Location2.X=5876.902mil|Location1.Y=4761.837mil|Location2.Y=4773.087mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5823.828mil|Location2.X=5835.078mil|Location1.Y=4527.328mil|Location2.Y=4538.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5823.828mil|Location2.X=5835.078mil|Location1.Y=4527.328mil|Location2.Y=4538.578mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-41.907mm,1.907mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7242.521mil|Location2.X=7253.771mil|Location1.Y=5734.45mil|Location2.Y=5745.7mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7242.521mil|Location2.X=7253.771mil|Location1.Y=5734.45mil|Location2.Y=5745.7mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-5.873mm,32.568mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7193.722mil|Location2.X=7204.972mil|Location1.Y=5982.244mil|Location2.Y=5993.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7193.722mil|Location2.X=7204.972mil|Location1.Y=5982.244mil|Location2.Y=5993.494mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.481mil|Location2.X=7136.731mil|Location1.Y=5867.96mil|Location2.Y=5879.21mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.481mil|Location2.X=7136.731mil|Location1.Y=5867.96mil|Location2.Y=5879.21mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-8.845mm,35.959mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.06mil|Location2.X=7136.31mil|Location1.Y=5962.244mil|Location2.Y=5973.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.06mil|Location2.X=7136.31mil|Location1.Y=5962.244mil|Location2.Y=5973.494mil|Absolute=True">Minimum Annular Ring: (0.175mm &lt; 0.254mm) Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer (Annular Ring=0.175mm) On (Top Layer)</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDIWC5ZWTAVMVWNT2GE2WBQS4POFNG34JX0ECYUIDGQZ4G0BISSSTH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.254mm) (Max=7.62mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.99mil|Location2.X=7409.082mil|Location1.Y=5878.003mil|Location2.Y=5889.096mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.99mil|Location2.X=7409.082mil|Location1.Y=5878.003mil|Location2.Y=5889.096mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-1.926mm,36.425mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.878mil|Location2.X=7408.971mil|Location1.Y=5772.15mil|Location2.Y=5783.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7397.878mil|Location2.X=7408.971mil|Location1.Y=5772.15mil|Location2.Y=5783.243mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-1.928mm,33.736mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7047.383mil|Location2.X=7058.476mil|Location1.Y=5953.957mil|Location2.Y=5965.049mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7047.383mil|Location2.X=7058.476mil|Location1.Y=5953.957mil|Location2.Y=5965.049mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7013.801mil|Location2.X=7024.893mil|Location1.Y=5829.743mil|Location2.Y=5840.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7013.801mil|Location2.X=7024.893mil|Location1.Y=5829.743mil|Location2.Y=5840.835mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-11.684mm,35.199mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6486.053mil|Location2.X=6497.146mil|Location1.Y=5709.919mil|Location2.Y=5721.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6486.053mil|Location2.X=6497.146mil|Location1.Y=5709.919mil|Location2.Y=5721.011mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6445.651mil|Location2.X=6456.743mil|Location1.Y=5744.292mil|Location2.Y=5755.384mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6445.651mil|Location2.X=6456.743mil|Location1.Y=5744.292mil|Location2.Y=5755.384mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6333.408mil|Location2.X=6344.5mil|Location1.Y=4932.667mil|Location2.Y=4943.76mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6333.408mil|Location2.X=6344.5mil|Location1.Y=4932.667mil|Location2.Y=4943.76mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-28.966mm,12.413mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6266.87mil|Location2.X=6277.962mil|Location1.Y=4672.892mil|Location2.Y=4683.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6266.87mil|Location2.X=6277.962mil|Location1.Y=4672.892mil|Location2.Y=4683.985mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-30.656mm,5.815mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6235.297mil|Location2.X=6246.39mil|Location1.Y=4723.952mil|Location2.Y=4735.044mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6235.297mil|Location2.X=6246.39mil|Location1.Y=4723.952mil|Location2.Y=4735.044mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156.478mil|Location2.X=6167.57mil|Location1.Y=4648.198mil|Location2.Y=4659.29mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156.478mil|Location2.X=6167.57mil|Location1.Y=4648.198mil|Location2.Y=4659.29mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149.755mil|Location2.X=6160.847mil|Location1.Y=4520.826mil|Location2.Y=4531.918mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149.755mil|Location2.X=6160.847mil|Location1.Y=4520.826mil|Location2.Y=4531.918mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-33.631mm,1.952mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6124.982mil|Location2.X=6136.074mil|Location1.Y=4722.167mil|Location2.Y=4733.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6124.982mil|Location2.X=6136.074mil|Location1.Y=4722.167mil|Location2.Y=4733.26mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-34.26mm,7.067mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6042.432mil|Location2.X=6053.524mil|Location1.Y=4520.826mil|Location2.Y=4531.918mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6042.432mil|Location2.X=6053.524mil|Location1.Y=4520.826mil|Location2.Y=4531.918mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-36.357mm,1.952mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6020.65mil|Location2.X=6031.743mil|Location1.Y=4671.049mil|Location2.Y=4682.142mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6020.65mil|Location2.X=6031.743mil|Location1.Y=4671.049mil|Location2.Y=4682.142mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.599mil|Location2.X=6015.691mil|Location1.Y=4932.667mil|Location2.Y=4943.76mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.599mil|Location2.X=6015.691mil|Location1.Y=4932.667mil|Location2.Y=4943.76mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.597mil|Location2.X=6015.689mil|Location1.Y=4722.167mil|Location2.Y=4733.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.597mil|Location2.X=6015.689mil|Location1.Y=4722.167mil|Location2.Y=4733.26mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5945.041mil|Location2.X=5956.134mil|Location1.Y=4753.55mil|Location2.Y=4764.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5945.041mil|Location2.X=5956.134mil|Location1.Y=4753.55mil|Location2.Y=4764.642mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5892.542mil|Location2.X=5903.634mil|Location1.Y=4915.609mil|Location2.Y=4926.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5892.542mil|Location2.X=5903.634mil|Location1.Y=4915.609mil|Location2.Y=4926.701mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.731mil|Location2.X=5876.823mil|Location1.Y=4751.985mil|Location2.Y=4763.077mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.731mil|Location2.X=5876.823mil|Location1.Y=4751.985mil|Location2.Y=4763.077mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.731mil|Location2.X=5876.823mil|Location1.Y=4753.55mil|Location2.Y=4764.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5865.731mil|Location2.X=5876.823mil|Location1.Y=4753.55mil|Location2.Y=4764.642mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5823.907mil|Location2.X=5834.999mil|Location1.Y=4519.041mil|Location2.Y=4530.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5823.907mil|Location2.X=5834.999mil|Location1.Y=4519.041mil|Location2.Y=4530.133mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-41.907mm,1.907mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7242.599mil|Location2.X=7253.692mil|Location1.Y=5726.163mil|Location2.Y=5737.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7242.599mil|Location2.X=7253.692mil|Location1.Y=5726.163mil|Location2.Y=5737.255mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-5.873mm,32.568mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7193.801mil|Location2.X=7204.893mil|Location1.Y=5973.957mil|Location2.Y=5985.049mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7193.801mil|Location2.X=7204.893mil|Location1.Y=5973.957mil|Location2.Y=5985.049mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.56mil|Location2.X=7136.653mil|Location1.Y=5859.672mil|Location2.Y=5870.765mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.56mil|Location2.X=7136.653mil|Location1.Y=5859.672mil|Location2.Y=5870.765mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-8.845mm,35.959mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.139mil|Location2.X=7136.232mil|Location1.Y=5953.957mil|Location2.Y=5965.049mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.139mil|Location2.X=7136.232mil|Location1.Y=5953.957mil|Location2.Y=5965.049mil|Absolute=True">Hole Size Constraint: (0.25mm &lt; 0.254mm) Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer Actual Hole Size = 0.25mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLSFWT1UHZZIPLF4KPSWXG1K44FCB5UNJKVWK0GFZEE2CSPUOXE4M"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5867.444mil|Location2.X=5875.11mil|Location1.Y=4755.263mil|Location2.Y=4762.93mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5867.444mil|Location2.X=5875.11mil|Location1.Y=4755.263mil|Location2.Y=4762.93mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 0.254mm) Between Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer And Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHV0Q5PXSDESWEWQLNY2S103PGCTDS2TEWLT4USD3J1U0HFCCBH0K"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.06mil|Location2.X=7136.31mil|Location1.Y=5978.843mil|Location2.Y=5990.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7125.06mil|Location2.X=7136.31mil|Location1.Y=5978.843mil|Location2.Y=5990.093mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.16mm &lt; 0.254mm) Between Pad C1-1(-8.981mm,40.072mm) on Bottom Layer And Via (-8.856mm,38.354mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7047.305mil|Location2.X=7058.555mil|Location1.Y=5978.843mil|Location2.Y=5990.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7047.305mil|Location2.X=7058.555mil|Location1.Y=5978.843mil|Location2.Y=5990.093mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.16mm &lt; 0.254mm) Between Pad C1-2(-10.831mm,40.072mm) on Bottom Layer And Via (-10.831mm,38.354mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6468.591mil|Location2.X=6479.841mil|Location1.Y=5692.457mil|Location2.Y=5703.707mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6468.591mil|Location2.X=6479.841mil|Location1.Y=5692.457mil|Location2.Y=5703.707mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.141mm &lt; 0.254mm) Between Pad C2-1(-25.726mm,30.39mm) on Bottom Layer And Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.141mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6466.801mil|Location2.X=6478.051mil|Location1.Y=5694.043mil|Location2.Y=5705.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6466.801mil|Location2.X=6478.051mil|Location1.Y=5694.043mil|Location2.Y=5705.583mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.145mm &lt; 0.254mm) Between Pad C2-2(-27.034mm,31.698mm) on Bottom Layer And Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.145mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6429.696mil|Location2.X=6440.946mil|Location1.Y=5728.337mil|Location2.Y=5739.587mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6429.696mil|Location2.X=6440.946mil|Location1.Y=5728.337mil|Location2.Y=5739.587mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.033mm &lt; 0.254mm) Between Pad C2-2(-27.034mm,31.698mm) on Bottom Layer And Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.033mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5885.48mil|Location2.X=5896.73mil|Location1.Y=4738.157mil|Location2.Y=4750.287mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5885.48mil|Location2.X=5896.73mil|Location1.Y=4738.157mil|Location2.Y=4750.287mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.118mm &lt; 0.254mm) Between Pad C3-1(-39.314mm,6.437mm) on Bottom Layer And Via (-40.845mm,7.824mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5885.178mil|Location2.X=5896.428mil|Location1.Y=4738.526mil|Location2.Y=4750.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5885.178mil|Location2.X=5896.428mil|Location1.Y=4738.526mil|Location2.Y=4750.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.141mm &lt; 0.254mm) Between Pad C3-1(-39.314mm,6.437mm) on Bottom Layer And Via (-40.845mm,7.864mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.141mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156.399mil|Location2.X=6167.649mil|Location1.Y=4621.756mil|Location2.Y=4633.006mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6156.399mil|Location2.X=6167.649mil|Location1.Y=4621.756mil|Location2.Y=4633.006mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.231mm &lt; 0.254mm) Between Pad J1-5(-33.46mm,3.902mm) on Top Layer And Via (-33.46mm,5.188mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.231mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6235.218mil|Location2.X=6246.468mil|Location1.Y=4749.174mil|Location2.Y=4760.424mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6235.218mil|Location2.X=6246.468mil|Location1.Y=4749.174mil|Location2.Y=4760.424mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.177mm &lt; 0.254mm) Between Pad R1-2(-31.145mm,8.697mm) on Top Layer And Via (-31.458mm,7.112mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.177mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.52mil|Location2.X=6015.77mil|Location1.Y=4908.311mil|Location2.Y=4919.561mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.52mil|Location2.X=6015.77mil|Location1.Y=4908.311mil|Location2.Y=4919.561mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.125mm &lt; 0.254mm) Between Pad R3-1(-37.318mm,10.88mm) on Top Layer And Via (-37.318mm,12.413mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5926.88mil|Location2.X=5938.13mil|Location1.Y=4772.78mil|Location2.Y=4784.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5926.88mil|Location2.X=5938.13mil|Location1.Y=4772.78mil|Location2.Y=4784.03mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.236mm &lt; 0.254mm) Between Pad R4-1(-40.164mm,8.98mm) on Top Layer And Via (-38.83mm,7.864mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.236mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5892.463mil|Location2.X=5903.713mil|Location1.Y=4893.286mil|Location2.Y=4904.536mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5892.463mil|Location2.X=5903.713mil|Location1.Y=4893.286mil|Location2.Y=4904.536mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad R4-2(-40.164mm,10.77mm) on Top Layer And Via (-40.164mm,11.98mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6465.773mil|Location2.X=6477.023mil|Location1.Y=5727.027mil|Location2.Y=5738.438mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6465.773mil|Location2.X=6477.023mil|Location1.Y=5727.027mil|Location2.Y=5738.438mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.239mm &lt; 0.254mm) Between Via (-25.089mm,32.155mm) from Top Layer to Bottom Layer And Via (-26.115mm,33.029mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.239mm] / [Bottom Solder] Mask Sliver [0.239mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6012.545mil|Location2.X=6026.123mil|Location1.Y=4696.529mil|Location2.Y=4707.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6012.545mil|Location2.X=6026.123mil|Location1.Y=4696.529mil|Location2.Y=4707.779mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.253mm &lt; 0.254mm) Between Via (-36.91mm,5.768mm) from Top Layer to Bottom Layer And Via (-37.318mm,7.067mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.253mm] / [Bottom Solder] Mask Sliver [0.253mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID32HOOXP2S05PMF3S2IF4JVSEQCIRWIXZOW1BVOKXUTG3NU3H1EXL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6436.924mil|Location2.X=6444.591mil|Location1.Y=5643.408mil|Location2.Y=5651.075mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6436.924mil|Location2.X=6444.591mil|Location1.Y=5643.408mil|Location2.Y=5651.075mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (-26.507mm,30.423mm) on Bottom Overlay And Pad C2-1(-25.726mm,30.39mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6030.415mil|Location2.X=6041.665mil|Location1.Y=4622.125mil|Location2.Y=4633.375mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6030.415mil|Location2.X=6041.665mil|Location1.Y=4622.125mil|Location2.Y=4633.375mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Arc (-36.66mm,4.902mm) on Top Overlay And Pad J1-1(-36.66mm,3.902mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5911.186mil|Location2.X=5918.853mil|Location1.Y=4692.384mil|Location2.Y=4700.051mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5911.186mil|Location2.X=5918.853mil|Location1.Y=4692.384mil|Location2.Y=4700.051mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (-39.861mm,6.267mm) on Bottom Overlay And Pad C3-1(-39.314mm,6.437mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7292.816mil|Location2.X=7304.066mil|Location1.Y=5765.105mil|Location2.Y=5776.355mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7292.816mil|Location2.X=7304.066mil|Location1.Y=5765.105mil|Location2.Y=5776.355mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Arc (-4.97mm,33.559mm) on Top Overlay And Pad J2-1(-3.97mm,33.559mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5830.332mil|Location2.X=5837.998mil|Location1.Y=4706.677mil|Location2.Y=4714.343mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5830.332mil|Location2.X=5837.998mil|Location1.Y=4706.677mil|Location2.Y=4714.343mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C3-2(-41.164mm,6.437mm) on Bottom Layer And Text "U3" (-40.702mm,7.808mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5914.117mil|Location2.X=5925.367mil|Location1.Y=4815.236mil|Location2.Y=4826.486mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5914.117mil|Location2.X=5925.367mil|Location1.Y=4815.236mil|Location2.Y=4826.486mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.145mm &lt; 0.254mm) Between Pad R4-1(-40.164mm,8.98mm) on Top Layer And Track (-39.614mm,9.58mm)(-39.614mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.145mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5870.809mil|Location2.X=5882.059mil|Location1.Y=4815.236mil|Location2.Y=4826.486mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5870.809mil|Location2.X=5882.059mil|Location1.Y=4815.236mil|Location2.Y=4826.486mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.145mm &lt; 0.254mm) Between Pad R4-1(-40.164mm,8.98mm) on Top Layer And Track (-40.714mm,9.58mm)(-40.714mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.145mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5914.117mil|Location2.X=5925.367mil|Location1.Y=4850.271mil|Location2.Y=4861.521mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5914.117mil|Location2.X=5925.367mil|Location1.Y=4850.271mil|Location2.Y=4861.521mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.135mm &lt; 0.254mm) Between Pad R4-2(-40.164mm,10.77mm) on Top Layer And Track (-39.614mm,9.58mm)(-39.614mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.135mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5870.809mil|Location2.X=5882.059mil|Location1.Y=4850.271mil|Location2.Y=4861.521mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5870.809mil|Location2.X=5882.059mil|Location1.Y=4850.271mil|Location2.Y=4861.521mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.135mm &lt; 0.254mm) Between Pad R4-2(-40.164mm,10.77mm) on Top Layer And Track (-40.714mm,9.58mm)(-40.714mm,10.18mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.135mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDQF0AZTCSNVZJP44CZD1WX0XQEMHG4PKH1OCE1JIBOJJFLB4YE2LO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7174.036mil|Location2.X=7234.221mil|Location1.Y=5954.192mil|Location2.Y=6049.714mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7174.036mil|Location2.X=7234.221mil|Location1.Y=5954.192mil|Location2.Y=6049.714mil|Absolute=True">Net Antennae: Via (-7.112mm,38.862mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDGIX134FOAC5BGX2W2W10D3EPAJEZL0YAHZGEHTJKPBH4QIX5ZTLP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6244.701mil|Location1.Y=0mil|Location2.Y=4652.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6244.701mil|Location1.Y=0mil|Location2.Y=4652.357mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT SIP Component J1-SM05B-SURS-TF(LF)(SN) (-35.06mm,2.802mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7441.158mil|Location1.Y=0mil|Location2.Y=5979.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7441.158mil|Location1.Y=0mil|Location2.Y=5979.392mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT SIP Component J2-SM05B-SURS-TF(LF)(SN) (-2.87mm,35.159mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7174.977mil|Location1.Y=0mil|Location2.Y=6077.347mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7174.977mil|Location1.Y=0mil|Location2.Y=6077.347mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component C1-Capacitor 100 nF +/-10% 50 V 0805 (-9.906mm,40.072mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6536.801mil|Location1.Y=0mil|Location2.Y=5767.763mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6536.801mil|Location1.Y=0mil|Location2.Y=5767.763mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component C2-Capacitor 100 nF +/-10% 50 V 0805 (-26.38mm,31.044mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5980.765mil|Location1.Y=0mil|Location2.Y=4753.131mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5980.765mil|Location1.Y=0mil|Location2.Y=4753.131mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component C3-Capacitor 100 nF +/-10% 50 V 0805 (-40.239mm,6.437mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6303.371mil|Location1.Y=0mil|Location2.Y=4918.879mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6303.371mil|Location1.Y=0mil|Location2.Y=4918.879mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R1-Resistor 10k +/-1% 0805 125 mW (-31.145mm,9.747mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6179.908mil|Location1.Y=0mil|Location2.Y=4920.171mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6179.908mil|Location1.Y=0mil|Location2.Y=4920.171mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R2-Resistor 10k +/-1% 0805 125 mW (-34.281mm,9.78mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6060.341mil|Location1.Y=0mil|Location2.Y=4922.139mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6060.341mil|Location1.Y=0mil|Location2.Y=4922.139mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R3-Resistor 10k +/-1% 0805 125 mW (-37.318mm,9.83mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5933.678mil|Location1.Y=0mil|Location2.Y=4898.516mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5933.678mil|Location1.Y=0mil|Location2.Y=4898.516mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component R4-0 (-40.164mm,9.88mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7460.126mil|Location1.Y=0mil|Location2.Y=6163.052mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7460.126mil|Location1.Y=0mil|Location2.Y=6163.052mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component U1-HAL1502SU-A (-3.617mm,41.342mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6460.507mil|Location1.Y=0mil|Location2.Y=5741.287mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=6460.507mil|Location1.Y=0mil|Location2.Y=5741.287mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component U2-HAL1502SU-A (-29.345mm,29.345mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5937.614mil|Location1.Y=0mil|Location2.Y=4715.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\OneDrive\Clients\002 - Prof Shen\05 Preliminary\11 Hall Effect v2 PCBA\ECAD\002-11 -- Hall Effect v2 PCBA.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5937.614mil|Location1.Y=0mil|Location2.Y=4715.082mil|Absolute=True">Room Definition: Between Room hall_switches (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('hall_switches')) And SMT Small Component U3-HAL1502SU-A (-41.342mm,3.617mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
